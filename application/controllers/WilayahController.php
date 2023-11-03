@@ -15,7 +15,7 @@ class WilayahController extends CI_Controller
             'all_kecamatan' => $this->wilayahmodel->get_kec()->result(),
             'all_desa' => $this->wilayahmodel->get_ds()->result(),
         ];
-        $this->mylib->layouting('wilayah/kecamatan', $data);
+        $this->mylib->layouting('wilayah/index', $data);
     }
 
     public function add_kec()

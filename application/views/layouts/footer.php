@@ -69,7 +69,7 @@
             "lengthChange": true,
             "autoWidth": true,
             "initComplete": function(settings, json) {
-                $("#dtTable").wrap("<div style='overflow:auto; width:100%;position:relative;'></div>");
+                $(".dtTable").wrap("<div style='overflow:auto; width:100%;position:relative;'></div>");
             },
         });
     })
@@ -115,7 +115,9 @@
 
         $('.add_ds').validate({
             rules: {
-                id_kec: required,
+                id_kec: {
+                    required: true,
+                },
                 ds: {
                     required: true,
                     letter: true

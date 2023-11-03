@@ -28,7 +28,7 @@
             </li>
 
             <!-- Layouts -->
-            <li class="menu-item <?= ($this->uri->segment(1) == 'master') ? 'active' : '' ?>">
+            <li class="menu-item <?= ($this->uri->segment(1) == 'wilayahcontroller') ? 'active open' : '' ?>">
                 <a href="javascript:void(0);" class="menu-link menu-toggle">
                     <i class="menu-icon tf-icons bx bx-key"></i>
                     <div data-i18n="Master">Master</div>
@@ -40,7 +40,7 @@
                             <div data-i18n="User">Data User</div>
                         </a>
                     </li>
-                    <li class="menu-item">
+                    <li class="menu-item <?= ($this->uri->uri_string() == 'wilayahcontroller/wilayah') ? 'active' : '' ?>">
                         <a href="<?= base_url('wilayahcontroller/wilayah'); ?>" class="menu-link">
                             <div data-i18n="Kecamatan &amp; Desa ">Data Kecamatan &amp; Desa</div>
                         </a>
