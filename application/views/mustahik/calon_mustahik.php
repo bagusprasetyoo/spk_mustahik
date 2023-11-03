@@ -27,7 +27,7 @@
                     <!-- <h5 class="card-header m-0 p-0">Small Table</h5> -->
                     <button type="button" class="btn btn-success mb-3">Tambah Data</button>
                     <div class="text-nowrap">
-                        <table id="dtTable" class="table table-sm table-striped table-hover dtTable">
+                        <table class="table table-sm table-striped table-hover dtTable">
                             <thead>
                                 <tr>
                                     <th>No</th>
