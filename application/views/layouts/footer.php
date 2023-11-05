@@ -79,7 +79,7 @@
     $(function() {
         // custom rules
         jQuery.validator.addMethod("letter", function(value, element) {
-            return this.optional(element) || /^[A-Za-z.',\s]+$/.test(value);
+            return this.optional(element) || /^[A-Za-z.',-\s]+$/.test(value);
         }, "Inputan harus berupa huruf!");
 
         // variable untuk rule yg sama
@@ -98,38 +98,60 @@
             }
         };
 
+        // sintaks form add & edit dipisah
         $('.add_kec').validate({
             rules: {
-                kec: {
+                nama_kec: {
                     required: true,
                     letter: true
                 }
             },
             messages: {
-                kec: {
+                nama_kec: {
                     required: req
                 }
             },
             ...element
         });
-
-        $('.add_ds').validate({
-            rules: {
-                id_kec: {
-                    required: true,
+        $('.edit_kec').each(function() {
+            var form = $(this);
+            form.validate({
+                rules: {
+                    nama_kec: {
+                        required: true,
+                        letter: true
+                    }
                 },
-                ds: {
-                    required: true,
-                    letter: true
-                }
-            },
-            messages: {
-                id_kec: req,
-                ds: {
-                    required: req
-                }
-            },
-            ...element
+                messages: {
+                    nama_kec: {
+                        required: req
+                    }
+                },
+                ...element
+            })
+        });
+
+        // contoh sintaks yg digunakan untuk 2 form sekaligus
+        $('.add_edit_ds').each(function() {
+            var form = $(this);
+            form.validate({
+                rules: {
+                    id_kec: {
+                        required: true,
+                    },
+                    nama_ds: {
+                        required: true,
+                        letter: true
+                    }
+                },
+                messages: {
+                    id_kec: req,
+                    nama_ds: {
+                        required: req
+                    }
+                },
+                ...element
+            })
         });
     });
 </script>

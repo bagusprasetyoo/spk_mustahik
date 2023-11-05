@@ -45,10 +45,10 @@
                                         <td><?= $dt_kec->nama_kecamatan; ?></td>
                                         <td>
                                             <button type="button" class="btn btn-icon btn-warning btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit">
-                                                <span class="bx bx-edit"></span>
+                                                <span class="bx bx-edit" data-bs-target="#edit_kec<?= $dt_kec->id_kecamatan; ?>" data-bs-toggle="modal"></span>
                                             </button>
                                             <button type="button" class="btn btn-icon btn-danger btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete">
-                                                <span class="bx bx-trash"></span>
+                                                <span class="bx bx-trash" data-bs-target="#delete_kec<?= $dt_kec->id_kecamatan; ?>" data-bs-toggle="modal"></span>
                                             </button>
                                         </td>
                                     </tr>
@@ -82,17 +82,17 @@
                             </thead>
                             <tbody class="table-border-bottom-0">
                                 <?php $i = 1;
-                                foreach ($all_desa as $dt_des) { ?>
+                                foreach ($all_desa as $dt_ds) { ?>
                                     <tr>
                                         <td><?= $i++; ?></td>
-                                        <td><?= $dt_des->nama_kecamatan; ?></td>
-                                        <td><?= $dt_des->nama_desa; ?></td>
+                                        <td><?= $dt_ds->nama_kecamatan; ?></td>
+                                        <td><?= $dt_ds->nama_desa; ?></td>
                                         <td>
                                             <button type="button" class="btn btn-icon btn-warning btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit">
-                                                <span class="bx bx-edit"></span>
+                                                <span class="bx bx-edit" data-bs-target="#edit_ds<?= $dt_ds->id_desa ?>" data-bs-toggle="modal"></span>
                                             </button>
                                             <button type="button" class="btn btn-icon btn-danger btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete">
-                                                <span class="bx bx-trash"></span>
+                                                <span class="bx bx-trash" data-bs-target="#delete_ds<?= $dt_ds->id_desa ?>" data-bs-toggle="modal"></span>
                                             </button>
                                         </td>
                                     </tr>
@@ -108,69 +108,4 @@
 </div>
 <!-- / Content -->
 
-<!-- Modal Tambah Kecamatan-->
-<div class="modal fade" id="add_kec" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Tambah Kecamatan</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form class="add_kec" action="<?= base_url('wilayahcontroller/add_kec') ?>" method="POST">
-                <div class="modal-body">
-                    <div class="mb-3 row">
-                        <label for="kec" class="col-md-3 col-form-label">Nama Kecamatan</label>
-                        <div class="col-md-9">
-                            <input class="form-control" type="text" id="kec" name="kec" placeholder="Masukan nama kecamatan" />
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" onclick="location.reload()">Close</button>
-                    <button type="submit" class="btn btn-success">Simpan</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-<!-- End Modal -->
-
-<!-- Modal Tambah Desa-->
-<div class="modal fade" id="add_ds" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Tambah Desa</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form class="add_ds" action="<?= base_url('wilayahcontroller/add_ds') ?>" method="POST">
-                <div class="modal-body">
-                    <div class="mb-3 row">
-                        <label for="kec" class="col-md-3 col-form-label">Pilih Kecamatan</label>
-                        <div class="col-md-9">
-                            <select id="kec" name="id_kec" class="form-select">
-                                <option value="">-Pilih Kecamatan-</option>
-                                <?php foreach ($all_kecamatan as $dt_kec) { ?>
-                                    <option value="<?= $dt_kec->id; ?>" <?= set_value('id_kec') == $dt_kec->id ? "selected" : null; ?>>
-                                        <?= $dt_kec->nama_kecamatan; ?>
-                                    </option>
-                                <?php } ?>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="mb-3 row">
-                        <label for="kec" class="col-md-3 col-form-label">Nama Desa</label>
-                        <div class="col-md-9">
-                            <input class="form-control" type="text" id="ds" name="ds" placeholder="Masukan nama kecamatan" />
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" onclick="location.reload()">Close</button>
-                    <button type="submit" class="btn btn-success">Simpan</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-<!-- End Modal -->
+<?php $this->load->view('wilayah/modal'); ?>

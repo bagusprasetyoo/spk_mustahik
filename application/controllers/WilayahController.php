@@ -28,10 +28,19 @@ class WilayahController extends CI_Controller
 
     public function edit_kec()
     {
+        $post = $this->input->post(null, TRUE);
+        $id = $this->input->post('id');
+
+        $this->wilayahmodel->update_kec($post, $id);
+        redirect('wilayahcontroller/wilayah');
     }
 
     public function delete_kec()
     {
+        $id = $this->input->post('id');
+
+        $this->wilayahmodel->delete_kec($id);
+        redirect('wilayahcontroller/wilayah');
     }
 
     public function add_ds()
@@ -44,6 +53,11 @@ class WilayahController extends CI_Controller
 
     public function edit_ds()
     {
+        $post = $this->input->post(null, TRUE);
+        $id = $this->input->post('id');
+
+        $this->wilayahmodel->update_ds($post, $id);
+        redirect('wilayahcontroller/wilayah');
     }
 
     public function delete_ds()
