@@ -51,8 +51,8 @@
             <li class="menu-header small text-uppercase">
                 <span class="menu-header-text">Mustahik</span>
             </li>
-            <li class="menu-item <?= ($this->uri->segment(1) == 'mustahikcontroller') ? 'active' : '' ?>">
-                <a href="<?= base_url('mustahikcontroller'); ?>" class="menu-link">
+            <li class="menu-item <?= ($this->uri->uri_string()  == 'mustahikcontroller/show_calon_mustahik') ? 'active' : '' ?>">
+                <a href="<?= base_url('mustahikcontroller/show_calon_mustahik'); ?>" class="menu-link">
                     <i class="menu-icon tf-icons bx bx-user-plus"></i>
                     <div data-i18n="Calon Mustahik">Calon Mustahik</div>
                 </a>
