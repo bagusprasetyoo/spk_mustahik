@@ -28,16 +28,16 @@
             </li>
 
             <!-- Layouts -->
-            <li class="menu-item <?= ($this->uri->segment(1) == 'wilayahcontroller') ? 'active open' : '' ?>">
+            <li class="menu-item <?= ($this->uri->segment(1) == 'wilayahcontroller' || $this->uri->segment(1) == 'penggunacontroller') ? 'active open' : '' ?>">
                 <a href="javascript:void(0);" class="menu-link menu-toggle">
                     <i class="menu-icon tf-icons bx bx-key"></i>
                     <div data-i18n="Master">Master</div>
                 </a>
 
                 <ul class="menu-sub">
-                    <li class="menu-item">
-                        <a href="master/users.html" class="menu-link">
-                            <div data-i18n="User">Data User</div>
+                    <li class="menu-item <?= ($this->uri->uri_string() == 'penggunacontroller') ? 'active' : '' ?>">
+                        <a href="<?= base_url('penggunacontroller'); ?>" class="menu-link">
+                            <div data-i18n="User">Data Pengguna</div>
                         </a>
                     </li>
                     <li class="menu-item <?= ($this->uri->uri_string() == 'wilayahcontroller/wilayah') ? 'active' : '' ?>">

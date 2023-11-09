@@ -62,5 +62,9 @@ class WilayahController extends CI_Controller
 
     public function delete_ds()
     {
+        $id = $this->input->post('id');
+
+        $this->wilayahmodel->delete_ds($id);
+        redirect('wilayahcontroller/wilayah');
     }
 }

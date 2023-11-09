@@ -82,8 +82,19 @@
             return this.optional(element) || /^[A-Za-z.',-\s]+$/.test(value);
         }, "Inputan harus berupa huruf!");
 
+        jQuery.validator.addMethod("alphanum", function(value, element) {
+            return this.optional(element) || /^[a-z][-a-z0-9\._]*$/.test(value);
+        }, "Inputan harus berupa huruf, angka, _, ");
+        /*  ^ beginning of line
+            [a-z] character class for lower values, to match the first letter
+            [-a-z0-9\._] character class for the rest of the required value
+            * zero or more for the last class
+            $ end of String 
+            https://stackoverflow.com/questions/1744377/regex-for-a-z-0-9-and*/
+
         // variable untuk rule yg sama
         var req = "Data harus diisi!"
+        var chose = "Data harus dipilih!"
         var element = {
             errorElement: 'span',
             errorPlacement: function(error, element) {
@@ -98,6 +109,7 @@
             }
         };
 
+        // VALIDASI UNTUK DATA WILAYAH
         // sintaks form add & edit dipisah
         $('.add_kec').validate({
             rules: {
@@ -148,6 +160,66 @@
                     id_kec: req,
                     nama_ds: {
                         required: req
+                    }
+                },
+                ...element
+            })
+        });
+
+        // VALIDASI UNTUK DATA PENGGUNA
+        $('.add_edit_peng').each(function() {
+            var form = $(this);
+            form.validate({
+                rules: {
+                    username: {
+                        required: true,
+                        alphanum: true,
+                        minlength: 3,
+                        remote: {
+                            url: "<?= base_url() ?>/penggunacontroller/check_username",
+                            type: "post",
+                            data: {
+                                username: function() {
+                                    return $("#username").val();
+                                }
+                            }
+                        }
+                    },
+                    password: {
+                        required: true,
+                        minlength: 5
+                    },
+                    passconf: {
+                        required: true,
+                        equalTo: "#password"
+                    },
+                    level: {
+                        required: true,
+                    },
+                    nama_pengguna: {
+                        required: true,
+                        letter: true
+                    }
+                },
+                messages: {
+                    username: {
+                        required: req,
+                        minlength: "username minimal memiliki 3 karakter",
+                        remote: "Username sudah digunakan, gunakan username lainnya"
+                    },
+                    password: {
+                        required: req,
+                        minlength: "Password minimal 5 karakter"
+                    },
+                    passconf: {
+                        required: req,
+                        equalTo: "Password tidak cocok"
+                    },
+                    level: {
+                        required: chose,
+                    },
+                    nama_pengguna: {
+                        required: req,
                     }
                 },
                 ...element

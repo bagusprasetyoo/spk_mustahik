@@ -25,43 +25,34 @@
             <div class="card">
                 <div class="card-body">
                     <!-- <h5 class="card-header m-0 p-0">Small Table</h5> -->
-                    <button type="button" class="btn btn-success mb-3">Tambah Data</button>
+                    <button type="button" class="btn btn-success mb-3" data-bs-target="#add_pengguna" data-bs-toggle="modal">Tambah Data</button>
                     <div class="text-nowrap">
                         <table class="table table-sm table-striped table-hover dtTable">
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>NIK</th>
-                                    <th>No. KK</th>
+                                    <th>Username</th>
+                                    <th>Level</th>
                                     <th>Nama</th>
-                                    <th>Kecamatan</th>
-                                    <th>Desa/Kelurahan</th>
-                                    <th>Alamat</th>
-                                    <th>Jum Kel</th>
+                                    <th>Tanggal Dibuat</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody class="table-border-bottom-0">
                                 <?php $i = 1;
-                                foreach ($all_mustahik as $dt_mustahik) { ?>
+                                foreach ($all_pengguna as $dt_pengguna) { ?>
                                     <tr>
                                         <td><?= $i++; ?></td>
-                                        <td><a href="#cln_mustahik<?= $dt_mustahik->nik; ?>" data-bs-toggle="modal"><?= $dt_mustahik->nik; ?></a></td>
-                                        <td><?= $dt_mustahik->no_kk; ?></td>
-                                        <td><?= $dt_mustahik->nama; ?></td>
-                                        <td><?= $dt_mustahik->kec; ?></td>
-                                        <td><?= $dt_mustahik->ds_kel; ?></td>
-                                        <td><?= $dt_mustahik->alamat; ?></td>
-                                        <td><?= $dt_mustahik->jumlah_keluarga; ?></td>
+                                        <td><?= $dt_pengguna->username; ?></td>
+                                        <td><?= $dt_pengguna->level; ?></td>
+                                        <td><?= $dt_pengguna->nama_pengguna; ?></td>
+                                        <td><?= $dt_pengguna->created_at; ?></td>
                                         <td>
-                                            <button type="button" class="btn btn-icon btn-secondary btn-sm" data-bs-target="#cln_mustahik<?= $dt_mustahik->nik; ?>" data-bs-toggle="modal" data-bs-placement="top" title="Detail">
-                                                <span class="bx bx-show-alt"></span>
-                                            </button>
                                             <button type="button" class="btn btn-icon btn-warning btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit">
-                                                <span class="bx bx-edit"></span>
+                                                <span class="bx bx-edit" data-bs-target="#edit_pengguna<?= $dt_pengguna->id_pengguna; ?>" data-bs-toggle="modal"></span>
                                             </button>
                                             <button type="button" class="btn btn-icon btn-danger btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete">
-                                                <span class="bx bx-trash"></span>
+                                                <span class="bx bx-trash" data-bs-target="#delete_pengguna<?= $dt_pengguna->id_pengguna; ?>" data-bs-toggle="modal"></span>
                                             </button>
                                         </td>
                                     </tr>
@@ -77,4 +68,6 @@
 </div>
 <!-- / Content -->
 
-<?php $this->load->view('mustahik/calon_mustahik_modal'); ?>
+<?php $this->load->view('pengguna/modal_add'); ?>
+<?php $this->load->view('pengguna/modal_edit'); ?>
+<?php $this->load->view('pengguna/modal_delete'); ?>
