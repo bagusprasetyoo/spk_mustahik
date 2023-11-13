@@ -9,9 +9,12 @@ class PenggunaModel extends CI_Model
         date_default_timezone_set('Asia/Makassar');
     }
 
-    public function get()
+    public function get($username = null)
     {
         $this->db->from('tb_pengguna');
+        if ($username != null) {
+            $this->db->where('username', $username);
+        }
         return $this->db->get();
     }
 

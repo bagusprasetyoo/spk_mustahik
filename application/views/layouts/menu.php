@@ -20,34 +20,37 @@
 
         <ul class="menu-inner py-1">
             <!-- Dashboard -->
-            <li class="menu-item <?= ($this->uri->segment(1) == '') ? 'active' : '' ?>">
-                <a href="<?= base_url(); ?>" class="menu-link">
+            <li class="menu-item <?= ($this->uri->segment(1) == 'dashboard') ? 'active' : '' ?>">
+                <a href="<?= base_url('dashboard'); ?>" class="menu-link">
                     <i class="menu-icon tf-icons bx bx-home-circle"></i>
                     <div data-i18n="Dashboard">Dashboard</div>
                 </a>
             </li>
 
-            <!-- Layouts -->
-            <li class="menu-item <?= ($this->uri->segment(1) == 'wilayahcontroller' || $this->uri->segment(1) == 'penggunacontroller') ? 'active open' : '' ?>">
-                <a href="javascript:void(0);" class="menu-link menu-toggle">
-                    <i class="menu-icon tf-icons bx bx-key"></i>
-                    <div data-i18n="Master">Master</div>
-                </a>
+            <?php if (lvl_admin()) { ?>
+                <!-- Master -->
+                <li class="menu-item <?= ($this->uri->segment(1) == 'pengguna' || $this->uri->segment(1) == 'wilayah') ? 'active open' : '' ?>">
+                    <a href="javascript:void(0);" class="menu-link menu-toggle">
+                        <i class="menu-icon tf-icons bx bx-key"></i>
+                        <div data-i18n="Master">Master</div>
+                    </a>
 
-                <ul class="menu-sub">
-                    <li class="menu-item <?= ($this->uri->uri_string() == 'penggunacontroller') ? 'active' : '' ?>">
-                        <a href="<?= base_url('penggunacontroller'); ?>" class="menu-link">
-                            <div data-i18n="User">Data Pengguna</div>
-                        </a>
-                    </li>
-                    <li class="menu-item <?= ($this->uri->uri_string() == 'wilayahcontroller/wilayah') ? 'active' : '' ?>">
-                        <a href="<?= base_url('wilayahcontroller/wilayah'); ?>" class="menu-link">
-                            <div data-i18n="Kecamatan &amp; Desa ">Data Kecamatan &amp; Desa</div>
-                        </a>
-                    </li>
-                </ul>
-            </li>
+                    <ul class="menu-sub">
+                        <li class="menu-item <?= ($this->uri->uri_string() == 'pengguna') ? 'active' : '' ?>">
+                            <a href="<?= base_url('pengguna'); ?>" class="menu-link">
+                                <div data-i18n="User">Data Pengguna</div>
+                            </a>
+                        </li>
+                        <li class="menu-item <?= ($this->uri->uri_string() == 'wilayah') ? 'active' : '' ?>">
+                            <a href="<?= base_url('wilayah'); ?>" class="menu-link">
+                                <div data-i18n="Kecamatan &amp; Desa ">Data Kecamatan &amp; Desa</div>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            <?php } ?>
 
+            <!-- Mustahik -->
             <li class="menu-header small text-uppercase">
                 <span class="menu-header-text">Mustahik</span>
             </li>
@@ -58,33 +61,33 @@
                 </a>
             </li>
             <li class="menu-item <?= ($this->uri->segment(1) == 'mustahikcontroller/rekomendasi_mustahik') ? 'active' : '' ?>">
-                <a href="https://demos.themeselection.com/sneat-bootstrap-html-admin-template/html/vertical-menu-template/app-email.html" target="_blank" class="menu-link">
+                <a href="" class="menu-link">
                     <i class="menu-icon tf-icons bx bx-user-check"></i>
                     <div data-i18n="Rekomendasi Mustahik">Rekomendasi Mustahik</div>
                 </a>
             </li>
             <li class="menu-item <?= ($this->uri->segment(1) == 'mustahikcontroller/data_mustahik') ? 'active' : '' ?>">
-                <a href="https://demos.themeselection.com/sneat-bootstrap-html-admin-template/html/vertical-menu-template/app-email.html" target="_blank" class="menu-link">
+                <a href="" class="menu-link">
                     <i class="menu-icon tf-icons bx bx-user"></i>
                     <div data-i18n="Data Mustahik">Data Mustahik</div>
                 </a>
             </li>
             <li class="menu-item <?= ($this->uri->segment(1) == 'mustahikcontroller/mustahik_ditolak') ? 'active' : '' ?>">
-                <a href="https://demos.themeselection.com/sneat-bootstrap-html-admin-template/html/vertical-menu-template/app-email.html" target="_blank" class="menu-link">
+                <a href="" class="menu-link">
                     <i class="menu-icon tf-icons bx bx-user-x"></i>
                     <div data-i18n="Calon Mustahi Ditolak">Calon Mustahik Ditolak</div>
                 </a>
             </li>
 
             <li class="menu-item <?= ($this->uri->segment(1) == 'mustahikcontroller/laporan') ? 'active' : '' ?>">
-                <a href="https://demos.themeselection.com/sneat-bootstrap-html-admin-template/html/vertical-menu-template/app-email.html" target="_blank" class="menu-link">
+                <a href="" class="menu-link">
                     <i class="menu-icon tf-icons bx bx-receipt"></i>
                     <div data-i18n="Email">Laporan</div>
                 </a>
             </li>
 
             <li class="menu-item">
-                <a href="" class="menu-link text-danger">
+                <a href="#logout" data-bs-toggle="modal" class="menu-link text-danger">
                     <i class="menu-icon tf-icons bx bx-log-out"></i>
                     <div data-i18n="Logout">Logout</div>
                 </a>
@@ -110,7 +113,7 @@
                 <ul class="navbar-nav flex-row align-items-center ms-auto">
                     <!-- Place this tag where you want the button to render. -->
                     <li class="nav-item lh-1 me-3">
-                        <a class="github-button" href="https://github.com/themeselection/sneat-html-admin-template-free" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star themeselection/sneat-html-admin-template-free on GitHub">Star</a>
+                        <?= userdata('nama'); ?>
                     </li>
 
                     <!-- User -->
@@ -130,8 +133,8 @@
                                             </div>
                                         </div>
                                         <div class="flex-grow-1">
-                                            <span class="fw-medium d-block">John Doe</span>
-                                            <small class="text-muted">Admin</small>
+                                            <span class="fw-medium d-block"><?= userdata('nama'); ?></span>
+                                            <small class="text-muted"><?= userdata('level'); ?></small>
                                         </div>
                                     </div>
                                 </a>
@@ -146,25 +149,10 @@
                                 </a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="#">
-                                    <i class="bx bx-cog me-2"></i>
-                                    <span class="align-middle">Settings</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="#">
-                                    <span class="d-flex align-items-center align-middle">
-                                        <i class="flex-shrink-0 bx bx-credit-card me-2"></i>
-                                        <span class="flex-grow-1 align-middle ms-1">Billing</span>
-                                        <span class="flex-shrink-0 badge badge-center rounded-pill bg-danger w-px-20 h-px-20">4</span>
-                                    </span>
-                                </a>
-                            </li>
-                            <li>
                                 <div class="dropdown-divider"></div>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="javascript:void(0);">
+                                <a class="dropdown-item" href="#logout" data-bs-toggle="modal">
                                     <i class="bx bx-power-off me-2"></i>
                                     <span class="align-middle">Log Out</span>
                                 </a>
@@ -175,7 +163,6 @@
                 </ul>
             </div>
         </nav>
-
         <!-- / Navbar -->
 
         <!-- Content wrapper -->

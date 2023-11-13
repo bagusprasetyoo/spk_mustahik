@@ -5,10 +5,12 @@ class WilayahController extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        must_login(); //helper
+        only_admin(); //hanya admin yg mengelola data pengguna
         $this->load->model('wilayahmodel');
     }
 
-    public function wilayah()
+    public function index()
     {
         $data = [
             'title' => 'Kecamatan & Desa',
@@ -23,7 +25,7 @@ class WilayahController extends CI_Controller
         $post = $this->input->post(null, TRUE);
 
         $this->wilayahmodel->insert_kec($post);
-        redirect('wilayahcontroller/wilayah');
+        redirect('wilayah');
     }
 
     public function edit_kec()
@@ -32,7 +34,7 @@ class WilayahController extends CI_Controller
         $id = $this->input->post('id');
 
         $this->wilayahmodel->update_kec($post, $id);
-        redirect('wilayahcontroller/wilayah');
+        redirect('wilayah');
     }
 
     public function delete_kec()
@@ -40,7 +42,7 @@ class WilayahController extends CI_Controller
         $id = $this->input->post('id');
 
         $this->wilayahmodel->delete_kec($id);
-        redirect('wilayahcontroller/wilayah');
+        redirect('wilayah');
     }
 
     public function add_ds()
@@ -48,7 +50,7 @@ class WilayahController extends CI_Controller
         $post = $this->input->post(null, TRUE);
 
         $this->wilayahmodel->insert_ds($post);
-        redirect('wilayahcontroller/wilayah');
+        redirect('wilayah');
     }
 
     public function edit_ds()
@@ -57,7 +59,7 @@ class WilayahController extends CI_Controller
         $id = $this->input->post('id');
 
         $this->wilayahmodel->update_ds($post, $id);
-        redirect('wilayahcontroller/wilayah');
+        redirect('wilayah');
     }
 
     public function delete_ds()
@@ -65,6 +67,6 @@ class WilayahController extends CI_Controller
         $id = $this->input->post('id');
 
         $this->wilayahmodel->delete_ds($id);
-        redirect('wilayahcontroller/wilayah');
+        redirect('wilayah');
     }
 }

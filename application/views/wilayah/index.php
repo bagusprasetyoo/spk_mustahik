@@ -21,6 +21,9 @@
     </div>
     <div class="row">
         <div class="col-12">
+
+            <?php $this->view('layouts/alert'); ?>
+
             <!-- Small table -->
             <div class="card">
                 <div class="card-body">

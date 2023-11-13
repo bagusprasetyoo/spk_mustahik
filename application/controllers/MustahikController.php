@@ -5,6 +5,7 @@ class MustahikController extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        must_login(); //helper      
         // memanggil model
         $this->load->model('mustahikmodel');
         $this->load->model('wilayahmodel');

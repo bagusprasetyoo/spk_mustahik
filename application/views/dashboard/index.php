@@ -1,5 +1,8 @@
 <!-- Content -->
 <div class="container-xxl flex-grow-1 container-p-y">
+
+    <?php $this->view('layouts/alert'); ?>
+
     <div class="row">
         <div class="col-lg-12 mb-4 order-0">
             <div class="card">

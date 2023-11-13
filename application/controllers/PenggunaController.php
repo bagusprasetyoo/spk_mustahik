@@ -5,8 +5,9 @@ class PenggunaController extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        // memanggil model
-        $this->load->model('penggunamodel');
+        must_login(); //helper
+        only_admin(); //hanya admin yg mengelola data pengguna
+        $this->load->model('penggunamodel'); // memanggil model
     }
 
     public function index()
@@ -24,7 +25,9 @@ class PenggunaController extends CI_Controller
         $post = $this->input->post(null, TRUE);
 
         $this->penggunamodel->insert($post);
-        redirect('penggunacontroller');
+
+        $this->session->set_flashdata('success', 'Data berhasil ditambahkan');
+        redirect('pengguna');
     }
 
     public function edit()
@@ -33,7 +36,10 @@ class PenggunaController extends CI_Controller
         $id = $this->input->post('id');
 
         $this->penggunamodel->update($post, $id);
-        redirect('penggunacontroller');
+        if ($this->db->affected_rows() > 0) {
+            $this->session->set_flashdata('edit', 'Data berhasil diedit');
+        }
+        redirect('pengguna');
     }
 
     public function delete()
@@ -41,9 +47,12 @@ class PenggunaController extends CI_Controller
         $id = $this->input->post('id');
 
         $this->penggunamodel->delete($id);
-        redirect('penggunacontroller');
+
+        $this->session->set_flashdata('delete', 'Data berhasil dihapus');
+        redirect('pengguna');
     }
 
+    // method check username untuk jquery validation
     public function check_username()
     {
         if (array_key_exists('username', $_POST)) {

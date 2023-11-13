@@ -31,6 +31,8 @@
     <a href="#uptotop" class="btn btn-icon btn-outline-success btn-buy-now"><span class="bx bx-chevron-up"></span></a>
 </div>
 
+<?php $this->load->view('layouts/modal_logout'); ?>
+
 <!-- Core JS -->
 <!-- build:js assets/vendor/js/core.js -->
 
@@ -83,8 +85,8 @@
         }, "Inputan harus berupa huruf!");
 
         jQuery.validator.addMethod("alphanum", function(value, element) {
-            return this.optional(element) || /^[a-z][-a-z0-9\._]*$/.test(value);
-        }, "Inputan harus berupa huruf, angka, _, ");
+            return this.optional(element) || /^[a-z][a-z0-9\._]*$/.test(value);
+        }, "Inputan harus berupa dan diawali huruf kecil, angka, underscore (_), atau titik (.) ");
         /*  ^ beginning of line
             [a-z] character class for lower values, to match the first letter
             [-a-z0-9\._] character class for the rest of the required value
