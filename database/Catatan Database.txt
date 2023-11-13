@@ -1,1 +1,2 @@
 db_spk_mustahik1 =  database pertama belum berelasi antara tb_mustahik dengan tb_kecamatan dan tb_desa, di tb_mustahik belum ada foreign key dari tabel yang ingin berelasi.
+db_spk_mustahik = database utama yang digunakan dalam aplikasi
