@@ -62,4 +62,11 @@ class WilayahModel extends CI_Model
         $this->db->where('id_desa', $id);
         return $this->db->delete('tb_desa');
     }
+
+    public function get_desa_by_kecamatan($id_kecamatan)
+    {
+        $this->db->from('tb_desa');
+        $this->db->where('id_kecamatan', $id_kecamatan);
+        return $this->db->get();
+    }
 }

@@ -30,10 +30,11 @@
                     <!-- <h5 class="card-header m-0 p-0">Small Table</h5> -->
                     <button type="button" class="btn btn-success mb-3" data-bs-target="#add_calon_mustahik" data-bs-toggle="modal">Tambah Data</button>
                     <div class="text-nowrap">
-                        <table class="table table-sm table-striped table-hover dtTable">
+                        <table class="table table-sm table-striped table-hover dtTable compact">
                             <thead>
                                 <tr>
                                     <th>No</th>
+                                    <th>Tgl Regis</th>
                                     <th>NIK</th>
                                     <th>No. KK</th>
                                     <th>Nama</th>
@@ -49,6 +50,7 @@
                                 foreach ($all_mustahik as $dt_mustahik) { ?>
                                     <tr>
                                         <td><?= $i++; ?></td>
+                                        <td><?= $dt_mustahik->tgl_regis; ?></td>
                                         <td><a href="#detail_calon_mustahik<?= $dt_mustahik->nik; ?>" data-bs-toggle="modal"><?= $dt_mustahik->nik; ?></a></td>
                                         <td><?= $dt_mustahik->no_kk; ?></td>
                                         <td><?= $dt_mustahik->nama; ?></td>
@@ -61,10 +63,10 @@
                                                 <span class="bx bx-show-alt" data-bs-target="#detail_calon_mustahik<?= $dt_mustahik->nik; ?>" data-bs-toggle="modal"></span>
                                             </button>
                                             <button type="button" class="btn btn-icon btn-warning btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit">
-                                                <span class="bx bx-edit" data-bs-target="#edit_calon_mustahik" data-bs-toggle="modal"></span>
+                                                <span class="bx bx-edit" data-bs-target="#edit_calon_mustahik<?= $dt_mustahik->id; ?>" data-bs-toggle="modal"></span>
                                             </button>
                                             <button type="button" class="btn btn-icon btn-danger btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete">
-                                                <span class="bx bx-trash" data-bs-target="#delete_calon_mustahik" data-bs-toggle="modal"></span>
+                                                <span class="bx bx-trash" data-bs-target="#delete_calon_mustahik<?= $dt_mustahik->id; ?>" data-bs-toggle="modal"></span>
                                             </button>
                                         </td>
                                     </tr>
@@ -82,3 +84,5 @@
 
 <?php $this->load->view('mustahik_calon/modal_detail'); ?>
 <?php $this->load->view('mustahik_calon/modal_add'); ?>
+<?php $this->load->view('mustahik_calon/modal_edit'); ?>
+<?php $this->load->view('mustahik_calon/modal_delete'); ?>

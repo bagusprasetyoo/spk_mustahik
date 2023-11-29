@@ -1,5 +1,5 @@
 <!-- Modal -->
-<form class="add_calon_mustahik" action="<?= base_url('mustahikcontroller/add_calon_mustahik') ?>" method="POST">
+<form class="add_edit_calonmustahik" action="<?= base_url('mustahikcaloncontroller/add') ?>" method="POST">
     <div class="modal fade" id="add_calon_mustahik" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
             <div class="modal-content">
@@ -18,21 +18,19 @@
                                     <select id="id_kecamatan" name="id_kecamatan" class="form-select">
                                         <option value="">-Pilih Kecamatan-</option>
                                         <?php foreach ($all_kecamatan as $dt_kec) { ?>
-                                            <option value="<?= $dt_kec->id_kecamatan; ?>" <?= set_value('id_kecamatan') == $dt_kec->id_kecamatan ? "selected" : null; ?>>
+                                            <option value="<?= $dt_kec->id_kecamatan; ?>">
                                                 <?= $dt_kec->nama_kecamatan; ?>
                                             </option>
                                         <?php } ?>
                                     </select>
                                 </div>
-                                <!-- <label for="id_kecamatan" class="col-md-3 col-form-label">Pilih Kecamatan</label>
-                                <div class="col-md-9">
-                                    <input class="form-control" type="text" id="id_kecamatan" name="id_kecamatan" placeholder="pilih" />
-                                </div> -->
                             </div>
                             <div class="mb-2 row">
                                 <label for="id_desa" class="col-md-3 col-form-label">Pilih Desa</label>
                                 <div class="col-md-9">
-                                    <input class="form-control" type="text" id="id_desa" name="id_desa" placeholder="pilih" />
+                                    <select id="id_desa" name="id_desa" class="form-select" disabled>
+                                        <option value="">- Pilih Desa -</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -81,7 +79,7 @@
                                 <div class="col-md-9">
                                     <input class="form-control" type="number" id="jumlah_keluarga" name="jumlah_keluarga" placeholder="Masukkan jumlah keluarga" />
                                     <div class="form-text">
-                                        Isi 0 jika kosong.
+                                        Isi 0 jika sendirian.
                                     </div>
                                 </div>
                             </div>
@@ -120,9 +118,9 @@
                                 </div>
                             </div>
                             <div class="mb-2 row">
-                                <label for="sumbar_dana" class="col-md-3 col-form-label">Sumber Dana</label>
+                                <label for="sumber_dana" class="col-md-3 col-form-label">Sumber Dana</label>
                                 <div class="col-md-9">
-                                    <input class="form-control" type="text" id="sumbar_dana" name="sumbar_dana" placeholder="Pilih sumber dana" />
+                                    <input class="form-control" type="text" id="sumber_dana" name="sumber_dana" placeholder="Pilih sumber dana" />
                                 </div>
                             </div>
                             <div class="mb-2 row">
@@ -176,7 +174,13 @@
                             <div class="mb-2 row">
                                 <label for="jenis_simpanan" class="col-md-3 col-form-label">Jenis Simpanan</label>
                                 <div class="col-md-9">
-                                    <input class="form-control" type="text" id="jenis_simpanan" name="jenis_simpanan" placeholder="Masukkan jenis simpanan yang dimiliki" />
+                                    <input class="form-control" type="text" id="jenis_simpanan" name="jenis_simpanan" placeholder="Masukkan jenis simpanan yang dimiliki. Contoh Emas" />
+                                </div>
+                            </div>
+                            <div class="mb-2 row">
+                                <label for="hutang" class="col-md-3 col-form-label">Hutang/Cicilan</label>
+                                <div class="col-md-9">
+                                    <input class="form-control" type="text" id="hutang" name="hutang" placeholder="Masukkan seluruh total hutang/cicilan yang dimiliki" />
                                 </div>
                             </div>
                             <div class="mb-2 row">
@@ -196,8 +200,8 @@
                                 <div class="col-md-9">
                                     <select id="halaman_rumah" name="halaman_rumah" class="form-select">
                                         <option value="">-Pilih luas per meter persegi-</option>
-                                        <option value="< 5m2">
-                                            < 5m2</option>
+                                        <option value="< 5 m2">
+                                            < 5 m2</option>
                                         <option value="5-7 m2">5-7 m2</option>
                                         <option value="7-9 m2">7-9 m2</option>
                                         <option value="> 9 m2">
@@ -210,8 +214,8 @@
                                 <div class="col-md-9">
                                     <select id="ukuran_rumah" name="ukuran_rumah" class="form-select">
                                         <option value="">-Pilih luas per meter persegi-</option>
-                                        <option value="< 4m2">
-                                            < 4m2</option>
+                                        <option value="< 4 m2">
+                                            < 4 m2</option>
                                         <option value="4-5 m2">4-5 m2</option>
                                         <option value="6-8 m2">6-8 m2</option>
                                         <option value="> 8 m2">
@@ -332,7 +336,7 @@
                             <div class="mb-2 row">
                                 <label for="luas_sawah" class="col-md-3 col-form-label">Luas Sawah</label>
                                 <div class="col-md-9">
-                                    <input class="form-control" type="text" id="luas_sawah" name="luas_sawah" placeholder="pilih" />
+                                    <input class="form-control" type="text" id="luas_sawah" name="luas_sawah" placeholder="Masukkan luas tanah sawah" />
                                 </div>
                             </div>
                             <div class="mb-2 row">

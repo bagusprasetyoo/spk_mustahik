@@ -69,4 +69,11 @@ class WilayahController extends CI_Controller
         $this->wilayahmodel->delete_ds($id);
         redirect('wilayah');
     }
+
+    public function get_desa_by_kecamatan()
+    {
+        $id_kecamatan = $this->input->post('id_kecamatan');
+        $data_desa = $this->wilayahmodel->get_desa_by_kecamatan($id_kecamatan)->result();
+        echo json_encode($data_desa);
+    }
 }

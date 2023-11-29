@@ -328,8 +328,8 @@
                     <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
                         Close
                     </button>
-                    <button type="button" class="btn btn-icon btn-warning" data-bs-target="#edit_cln_mustahik" data-bs-toggle="modal" data-bs-dismiss="modal" title="Edit"> <span class="bx bx-edit"></span></button>
-                    <button type="button" class="btn btn-icon btn-danger" data-bs-target="#delete_cln_mustahik" data-bs-toggle="modal" data-bs-dismiss="modal" title="Hapus"> <span class="bx bx-trash"></span></button>
+                    <button type="button" class="btn btn-icon btn-warning" data-bs-target="#edit_calon_mustahik<?= $dt_mustahik->id; ?>" data-bs-toggle="modal" data-bs-dismiss="modal" title="Edit"> <span class="bx bx-edit"></span></button>
+                    <button type="button" class="btn btn-icon btn-danger" data-bs-target="#delete_calon_mustahik<?= $dt_mustahik->id; ?>" data-bs-toggle="modal" data-bs-dismiss="modal" title="Hapus"> <span class="bx bx-trash"></span></button>
                 </div>
             </div>
         </div>

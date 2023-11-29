@@ -54,7 +54,8 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 // custom routes
-$route['auth/(:any)'] = 'authcontroller/$1';
+$route['auth/(:any)'] = 'authcontroller/$1'; //(:any) digunakan untuk parameter method
 $route['dashboard'] = 'dashboardcontroller';
 $route['pengguna'] = 'penggunacontroller';
 $route['wilayah'] = 'wilayahcontroller';
+$route['calonmustahik'] = 'mustahikcaloncontroller';
