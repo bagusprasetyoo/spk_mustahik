@@ -25,6 +25,7 @@ class WilayahController extends CI_Controller
         $post = $this->input->post(null, TRUE);
 
         $this->wilayahmodel->insert_kec($post);
+        $this->session->set_flashdata('success', 'Data berhasil ditambahkan');
         redirect('wilayah');
     }
 
@@ -34,6 +35,9 @@ class WilayahController extends CI_Controller
         $id = $this->input->post('id');
 
         $this->wilayahmodel->update_kec($post, $id);
+        if ($this->db->affected_rows() > 0) {
+            $this->session->set_flashdata('edit', 'Data berhasil diedit');
+        }
         redirect('wilayah');
     }
 
@@ -42,6 +46,7 @@ class WilayahController extends CI_Controller
         $id = $this->input->post('id');
 
         $this->wilayahmodel->delete_kec($id);
+        $this->session->set_flashdata('delete', 'Data berhasil dihapus');
         redirect('wilayah');
     }
 
@@ -50,6 +55,7 @@ class WilayahController extends CI_Controller
         $post = $this->input->post(null, TRUE);
 
         $this->wilayahmodel->insert_ds($post);
+        $this->session->set_flashdata('success', 'Data berhasil ditambahkan');
         redirect('wilayah');
     }
 
@@ -59,6 +65,9 @@ class WilayahController extends CI_Controller
         $id = $this->input->post('id');
 
         $this->wilayahmodel->update_ds($post, $id);
+        if ($this->db->affected_rows() > 0) {
+            $this->session->set_flashdata('edit', 'Data berhasil diedit');
+        }
         redirect('wilayah');
     }
 
@@ -67,6 +76,7 @@ class WilayahController extends CI_Controller
         $id = $this->input->post('id');
 
         $this->wilayahmodel->delete_ds($id);
+        $this->session->set_flashdata('delete', 'Data berhasil dihapus');
         redirect('wilayah');
     }
 
