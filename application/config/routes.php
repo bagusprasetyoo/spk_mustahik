@@ -59,3 +59,4 @@ $route['dashboard'] = 'dashboardcontroller';
 $route['pengguna'] = 'penggunacontroller';
 $route['wilayah'] = 'wilayahcontroller';
 $route['calonmustahik'] = 'mustahikcaloncontroller';
+$route['rekomendasimustahik/(:any)'] = 'mustahikrekomendasicontroller/$1';

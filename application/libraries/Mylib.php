@@ -19,4 +19,10 @@ class Mylib
         $this->ci->load->view($content, $data);
         $this->ci->load->view('layouts/footer', $data);
     }
+
+    //menghitung jumlah data berdasarkan table dapat digunakan untuk berbagai tabel
+    function count_data($table)
+    {
+        return $this->ci->db->get($table)->num_rows();
+    }
 }

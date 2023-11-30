@@ -60,8 +60,8 @@
                     <div data-i18n="Calon Mustahik">Calon Mustahik</div>
                 </a>
             </li>
-            <li class="menu-item <?= ($this->uri->segment(1) == 'mustahikcontroller/rekomendasi_mustahik') ? 'active' : '' ?>">
-                <a href="" class="menu-link">
+            <li class="menu-item <?= ($this->uri->segment(1) == 'rekomendasimustahik') ? 'active' : '' ?>">
+                <a href="<?= base_url('rekomendasimustahik/index'); ?>" class="menu-link">
                     <i class="menu-icon tf-icons bx bx-user-check"></i>
                     <div data-i18n="Rekomendasi Mustahik">Rekomendasi Mustahik</div>
                 </a>
